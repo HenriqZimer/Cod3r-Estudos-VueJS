@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue@2.7.14/dist/vue.js"></script>
+
+<div id="app">
+    <templete v-if="logado">
+        <p>Usuário Logado: {{ nome }}</p>
+        <p>Perfil: Admin</p>
+    </templete>
+    <p v-else-if="anonimo"> Navegando como anonimo</p>
+    <p v-else>Nenhum Usuário Logado</p>
+    <button @click="logado = !logado">
+        {{ logado ? 'Sair' : 'Entrar' }}</button>
+        <input type="checkbox" v-model="anonimo">
+        <hr>
+        <footer v-show="logado">
+            Desenvolvido para VC
+        </footer>
+        <footer v-show>
+            Desenvolvido para VC
+        </footer>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            nome: 'Maria',
+            logado: false,
+            anonimo: true,
+        }
+    })
+</script>
