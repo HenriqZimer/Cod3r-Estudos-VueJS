@@ -1,6 +1,8 @@
 <meta charset="UTF-8">
 
-<div id="app"></div>
+<div id="app">
+    {{ nome }} {{ sobrenome }} {{ 100 - 55 }} {{ Math.pow(2, 3) }}
+</div>
 
 <script>
     function MeuVue(params){
@@ -17,7 +19,7 @@
             })
         }
         // interpolar
-        const regex = /\{\{([\s\w+]*)}}/g
+        const regex = /\{\{([\s\w)(,.+*-]*)\}\}/g
         this.$el.innerHTML = this.$el.innerHTML.replace(regex, (match, $1) => {
             const value = this[$1.trim()]
             return value ? value : eval($1)
@@ -31,9 +33,14 @@
             sobrenome: 'Silva'
         }
     })
+    
     console.log(vm.nome)
     console.log(vm.$data.nome)
 
     vm.nome = 'Pedro'
     console.log(vm.nome)
+    console.log(vm.$data.nome)
+
+    // vm.nome = 'Pedro'
+    // console.log(vm.nome)
 </script>
